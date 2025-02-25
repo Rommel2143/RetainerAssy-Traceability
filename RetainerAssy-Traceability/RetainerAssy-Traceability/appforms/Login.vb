@@ -1,6 +1,10 @@
 ﻿Imports MySql.Data.MySqlClient
 Public Class Login
     Private Sub btn_login_Click(sender As Object, e As EventArgs) Handles btn_login.Click
+        submitLogin()
+    End Sub
+
+    Private Sub submitLogin()
         Try
 
             Dim idwithA As String = "A" & txt_user.Text & "A"
@@ -43,5 +47,11 @@ Public Class Login
 
     Private Sub txt_pass_TextChanged(sender As Object, e As EventArgs) Handles txt_pass.TextChanged
 
+    End Sub
+
+    Private Sub txt_pass_KeyDown(sender As Object, e As KeyEventArgs) Handles txt_pass.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            submitLogin()
+        End If
     End Sub
 End Class

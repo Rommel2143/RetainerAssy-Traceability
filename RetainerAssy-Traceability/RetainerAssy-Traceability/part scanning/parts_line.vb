@@ -8,7 +8,7 @@ Public Class parts_line
         Try
             con.Close()
             con.Open()
-            Dim query As String = "SELECT line FROM denso_line"
+            Dim query As String = "SELECT line FROM denso_line WHERE line != 'KITTING' "
             Dim selectdata As New MySqlCommand(query, con)
             dr = selectdata.ExecuteReader
             While dr.Read = True

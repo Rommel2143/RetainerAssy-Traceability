@@ -67,6 +67,33 @@ Module kitting
         End Try
     End Function
 
+
+    Private Function ProcessQRcode_painted(qrcode As String) As Boolean
+        Try
+            MessageBox.Show(qrcode.Substring(0, 13))
+            MessageBox.Show(qrcode.Substring(18, 3))
+            If CheckPartName_kitting(qrcode.Substring(0, 13), 1) = True Then
+                QRpartcode = qrcode.Substring(0, 13)
+                QRlotnumber = ""
+                QRqty = qrcode.Substring(15, 3)
+                Return True ' Indicate success
+            Else
+                ' Show an error if the QR code format is invalid
+                show_error("Invalid QR format!", 1)
+                Return False ' Indicate failure
+            End If
+
+        Catch ex As Exception
+            ' Handle unexpected errors gracefully
+            show_error("Invalid QR format!", 1)
+            Return False ' Indicate failure
+
+        End Try
+    End Function
+
+
+
+
     Private Sub cleardata()
         QRpartcode = ""
         QRlotnumber = ""
@@ -191,11 +218,29 @@ Module kitting
                     End If
                 Case 3
                     If ProcessQRcode_inoac(qrcode) Then
+                        If CheckPartName_kitting(QRpartcode, type) Then
+                            con.Close()
+                            con.Open()
+                            Dim query As String = "INSERT INTO `denso_kitting` (`qrcode`, `partno`, `qty`,`userin`, `datein`, `userout`, `dateout`, `type`) 
+                                   VALUES (@qrcode, @partcode, @qty, @userin, CURDATE(), NULL, NULL, " & type & ")"
+                            Dim insert As New MySqlCommand(query, con)
+                            insert.Parameters.AddWithValue("@qrcode", qrcode)
+                            insert.Parameters.AddWithValue("@partcode", QRpartcode)
+                            insert.Parameters.AddWithValue("@qty", QRqty)
+                            insert.Parameters.AddWithValue("@userin", user_idno)
+                            insert.Parameters.AddWithValue("@pcin", PC_name)
+                            insert.ExecuteNonQuery()
+                            Return True ' Insert successful
+
+                        End If
+                    End If
+                Case 4
+                    If ProcessQRcode_painted(qrcode) Then
 
                         con.Close()
                         con.Open()
                         Dim query As String = "INSERT INTO `denso_kitting` (`qrcode`, `partno`, `qty`,`userin`, `datein`, `userout`, `dateout`, `type`) 
-                                   VALUES (@qrcode, @partcode, @qty, @userin, CURDATE(), NULL, NULL, " & type & ")"
+                                   VALUES (@qrcode, @partcode, @qty, @userin, CURDATE(), NULL, NULL,1)"
                         Dim insert As New MySqlCommand(query, con)
                         insert.Parameters.AddWithValue("@qrcode", qrcode)
                         insert.Parameters.AddWithValue("@partcode", QRpartcode)
@@ -206,7 +251,6 @@ Module kitting
                         Return True ' Insert successful
 
                     End If
-
             End Select
 
         Catch ex As MySqlException When ex.Number = 1062

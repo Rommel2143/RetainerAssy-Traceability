@@ -3,16 +3,8 @@ Imports Guna.UI2.WinForms
 Public Class qc_scanning
 
     Private Sub qc_scanning_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        con.Close()
-        con.Open()
-        Dim query As String = "SELECT `remarks` FROM `trc_device` WHERE PCname='" & PC_name & "'"
-        Dim selectline As New MySqlCommand(query, con)
-        dr = selectline.ExecuteReader
-        If dr.Read = True Then
-            lbl_line.Text = dr.GetString("remarks")
-            reload("SELECT `qrcode`, `qty`,`timein` FROM `denso_line_traceability` WHERE datein=CURDATE()", datagrid1)
-        End If
-
+        lbl_line.Text = PC_line
+        reload("SELECT `qrcode`, `qty`,`timein` FROM `denso_line_traceability` WHERE datein=CURDATE() and line= '" & lbl_line.Text & "'", datagrid1)
 
         reload_parts()
 
@@ -40,7 +32,7 @@ Public Class qc_scanning
                     Using cmd As New MySqlCommand(insertQuery, con)
                         cmd.ExecuteNonQuery()
 
-                        reload("SELECT `qrcode`, `qty`,`timein` FROM `denso_line_traceability` WHERE datein=CURDATE() ORDER BY id DESC", datagrid1)
+                        reload("SELECT `qrcode`, `qty`,`timein` FROM `denso_line_traceability` WHERE datein=CURDATE() and line= '" & lbl_line.Text & "' ORDER BY id DESC", datagrid1)
                         reload_parts()
 
                     End Using
@@ -222,9 +214,9 @@ Public Class qc_scanning
     End Sub
 
     Private Sub reload_parts()
-        reload("SELECT `qr_id`,`qty` FROM `denso_line_boxes` WHERE type = 1 and qty > 0", datagrid_bezel)
-        reload("SELECT `qr_id`,`qty` FROM `denso_line_boxes` WHERE type = 2 and qty > 0", datagrid_retainer)
-        reload("SELECT `qr_id`,`qty` FROM `denso_line_boxes` WHERE type = 3 and qty > 0", datagrid_tape)
+        reload("SELECT `qr_id`,`qty` FROM `denso_line_boxes` WHERE type = 1 and qty > 0 and line= '" & lbl_line.Text & "' ", datagrid_bezel)
+        reload("SELECT `qr_id`,`qty` FROM `denso_line_boxes` WHERE type = 2 and qty > 0 and line= '" & lbl_line.Text & "'", datagrid_retainer)
+        reload("SELECT `qr_id`,`qty` FROM `denso_line_boxes` WHERE type = 3 and qty > 0 and line= '" & lbl_line.Text & "'", datagrid_tape)
         get_total(datagrid_bezel, lbl_qtybezel)
         get_total(datagrid_retainer, lbl_qtyretainer)
         get_total(datagrid_tape, lbl_qtytape)
