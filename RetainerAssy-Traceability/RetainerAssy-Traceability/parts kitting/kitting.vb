@@ -70,16 +70,14 @@ Module kitting
 
     Private Function ProcessQRcode_painted(qrcode As String) As Boolean
         Try
-            MessageBox.Show(qrcode.Substring(0, 13))
-            MessageBox.Show(qrcode.Substring(18, 3))
-            If CheckPartName_kitting(qrcode.Substring(0, 13), 1) = True Then
+
+            If CheckPartName_kitting(qrcode.Substring(0, 13), 4) = True Then
                 QRpartcode = qrcode.Substring(0, 13)
                 QRlotnumber = ""
                 QRqty = qrcode.Substring(15, 3)
                 Return True ' Indicate success
             Else
-                ' Show an error if the QR code format is invalid
-                show_error("Invalid QR format!", 1)
+
                 Return False ' Indicate failure
             End If
 

@@ -29,6 +29,7 @@ Public Class kitting_IN
         WHEN dm.type = 1 THEN 'BEZEL'
         WHEN dm.type = 2 THEN 'RETAINER'
         WHEN dm.type = 3 THEN 'TAPE'
+        WHEN dm.type = 4 THEN 'PAINTED BEZEL'
         ELSE 'UNKNOWN'
     END AS partname,
     dk.partno, 

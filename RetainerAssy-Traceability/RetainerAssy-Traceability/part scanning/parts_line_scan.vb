@@ -18,7 +18,7 @@ Public Class parts_line_scan
     Public Sub loadparts(line As String)
         Try
 
-            reload("SELECT `qr_id`,`qty` FROM `denso_line_boxes` WHERE line='" & line & "' and type = 1 and qty > 0", datagrid_bezel)
+            reload("SELECT `qr_id`,`qty` FROM `denso_line_boxes` WHERE line='" & line & "' and (type = 1 or type = 4) and qty > 0", datagrid_bezel)
             reload("SELECT `qr_id`,`qty` FROM `denso_line_boxes` WHERE line='" & line & "' and type = 2 and qty > 0", datagrid_retainer)
             reload("SELECT `qr_id`,`qty` FROM `denso_line_boxes` WHERE line='" & line & "' and type = 3 and qty > 0", datagrid_tape)
             get_total(datagrid_bezel, lbl_qtybezel)
@@ -124,6 +124,8 @@ Public Class parts_line_scan
                 Return "Retainer"
             Case 3
                 Return "Tape"
+            Case 4
+                Return "Painted Bezel"
             Case Else
                 Return "Unknown"
         End Select
