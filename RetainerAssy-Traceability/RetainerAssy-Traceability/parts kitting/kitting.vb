@@ -41,13 +41,13 @@ Module kitting
 
     Private Function ProcessQRcode_inoac(qrcode As String) As Boolean
         Try
-            Dim parts() As String = qrcode.Trim.Split("|")
+            Dim parts() As String = qrcode.Trim.Split("/")
 
             'CON 1 : QR SPLITING
-            If parts.Length >= 4 Then
-                QRpartcode = parts(5)
-                QRlotnumber = parts(2)
-                QRqty = parts(3)
+            If parts.Length >= 6 Then
+                QRpartcode = parts(3)
+                QRlotnumber = parts(0)
+                QRqty = parts(6)
                 Return True ' Indicate success
             Else
                 ' Show an error if the QR code format is invalid
