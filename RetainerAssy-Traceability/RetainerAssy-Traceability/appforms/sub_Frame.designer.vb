@@ -26,6 +26,13 @@ Partial Class sub_Frame
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(sub_Frame))
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.btn_menu = New Guna.UI2.WinForms.Guna2Button()
+        Me.system_menu = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.ToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ScanINToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.PartsScanningToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.QCScanningToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.TraceabilityToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.btn_profile = New Guna.UI2.WinForms.Guna2Button()
         Me.profile_menu = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.btn_user = New System.Windows.Forms.ToolStripMenuItem()
@@ -35,19 +42,13 @@ Partial Class sub_Frame
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Guna2PictureBox1 = New Guna.UI2.WinForms.Guna2PictureBox()
-        Me.btn_menu = New Guna.UI2.WinForms.Guna2Button()
-        Me.system_menu = New System.Windows.Forms.ContextMenuStrip(Me.components)
-        Me.ToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ScanINToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.PartsScanningToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.QCScanningToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.TraceabilityToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
+        Me.btn_stock = New Guna.UI2.WinForms.Guna2Button()
         Me.Panel2.SuspendLayout()
+        Me.system_menu.SuspendLayout()
         Me.profile_menu.SuspendLayout()
         Me.Panel3.SuspendLayout()
         CType(Me.Guna2PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.system_menu.SuspendLayout()
         Me.SuspendLayout()
         '
         'Panel1
@@ -62,13 +63,90 @@ Partial Class sub_Frame
         '
         Me.Panel2.BackColor = System.Drawing.SystemColors.ControlLight
         Me.Panel2.Controls.Add(Me.btn_menu)
-        Me.Panel2.Controls.Add(Me.btn_profile)
         Me.Panel2.Controls.Add(Me.Panel3)
+        Me.Panel2.Controls.Add(Me.btn_stock)
+        Me.Panel2.Controls.Add(Me.btn_profile)
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel2.Location = New System.Drawing.Point(0, 0)
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(1016, 51)
         Me.Panel2.TabIndex = 6
+        '
+        'btn_menu
+        '
+        Me.btn_menu.BackColor = System.Drawing.Color.Transparent
+        Me.btn_menu.BorderRadius = 5
+        Me.btn_menu.ContextMenuStrip = Me.system_menu
+        Me.btn_menu.DisabledState.BorderColor = System.Drawing.Color.DarkGray
+        Me.btn_menu.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
+        Me.btn_menu.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
+        Me.btn_menu.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
+        Me.btn_menu.Dock = System.Windows.Forms.DockStyle.Right
+        Me.btn_menu.FillColor = System.Drawing.SystemColors.ControlLight
+        Me.btn_menu.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.btn_menu.ForeColor = System.Drawing.Color.DimGray
+        Me.btn_menu.Image = CType(resources.GetObject("btn_menu.Image"), System.Drawing.Image)
+        Me.btn_menu.ImageSize = New System.Drawing.Size(24, 24)
+        Me.btn_menu.Location = New System.Drawing.Point(869, 0)
+        Me.btn_menu.Name = "btn_menu"
+        Me.btn_menu.Size = New System.Drawing.Size(46, 51)
+        Me.btn_menu.TabIndex = 5
+        Me.ToolTip1.SetToolTip(Me.btn_menu, "Menu")
+        Me.btn_menu.UseTransparentBackground = True
+        '
+        'system_menu
+        '
+        Me.system_menu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem2, Me.PartsScanningToolStripMenuItem, Me.QCScanningToolStripMenuItem, Me.TraceabilityToolStripMenuItem})
+        Me.system_menu.Name = "ContextMenuStrip1"
+        Me.system_menu.Size = New System.Drawing.Size(180, 124)
+        '
+        'ToolStripMenuItem2
+        '
+        Me.ToolStripMenuItem2.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ScanINToolStripMenuItem})
+        Me.ToolStripMenuItem2.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ToolStripMenuItem2.ForeColor = System.Drawing.Color.DimGray
+        Me.ToolStripMenuItem2.Image = CType(resources.GetObject("ToolStripMenuItem2.Image"), System.Drawing.Image)
+        Me.ToolStripMenuItem2.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
+        Me.ToolStripMenuItem2.Name = "ToolStripMenuItem2"
+        Me.ToolStripMenuItem2.Size = New System.Drawing.Size(179, 30)
+        Me.ToolStripMenuItem2.Text = "Kitting"
+        '
+        'ScanINToolStripMenuItem
+        '
+        Me.ScanINToolStripMenuItem.ForeColor = System.Drawing.Color.DimGray
+        Me.ScanINToolStripMenuItem.Name = "ScanINToolStripMenuItem"
+        Me.ScanINToolStripMenuItem.Size = New System.Drawing.Size(128, 24)
+        Me.ScanINToolStripMenuItem.Text = "Scan IN"
+        '
+        'PartsScanningToolStripMenuItem
+        '
+        Me.PartsScanningToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.PartsScanningToolStripMenuItem.ForeColor = System.Drawing.Color.DimGray
+        Me.PartsScanningToolStripMenuItem.Image = CType(resources.GetObject("PartsScanningToolStripMenuItem.Image"), System.Drawing.Image)
+        Me.PartsScanningToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
+        Me.PartsScanningToolStripMenuItem.Name = "PartsScanningToolStripMenuItem"
+        Me.PartsScanningToolStripMenuItem.Size = New System.Drawing.Size(179, 30)
+        Me.PartsScanningToolStripMenuItem.Text = "Parts Scanning"
+        '
+        'QCScanningToolStripMenuItem
+        '
+        Me.QCScanningToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.QCScanningToolStripMenuItem.ForeColor = System.Drawing.Color.DimGray
+        Me.QCScanningToolStripMenuItem.Image = CType(resources.GetObject("QCScanningToolStripMenuItem.Image"), System.Drawing.Image)
+        Me.QCScanningToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
+        Me.QCScanningToolStripMenuItem.Name = "QCScanningToolStripMenuItem"
+        Me.QCScanningToolStripMenuItem.Size = New System.Drawing.Size(179, 30)
+        Me.QCScanningToolStripMenuItem.Text = "QC Scanning"
+        '
+        'TraceabilityToolStripMenuItem
+        '
+        Me.TraceabilityToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TraceabilityToolStripMenuItem.ForeColor = System.Drawing.Color.DimGray
+        Me.TraceabilityToolStripMenuItem.Image = CType(resources.GetObject("TraceabilityToolStripMenuItem.Image"), System.Drawing.Image)
+        Me.TraceabilityToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
+        Me.TraceabilityToolStripMenuItem.Name = "TraceabilityToolStripMenuItem"
+        Me.TraceabilityToolStripMenuItem.Size = New System.Drawing.Size(179, 30)
+        Me.TraceabilityToolStripMenuItem.Text = "Traceability"
         '
         'btn_profile
         '
@@ -175,81 +253,27 @@ Partial Class sub_Frame
         Me.Guna2PictureBox1.TabStop = False
         Me.Guna2PictureBox1.UseTransparentBackground = True
         '
-        'btn_menu
+        'btn_stock
         '
-        Me.btn_menu.BackColor = System.Drawing.Color.Transparent
-        Me.btn_menu.BorderRadius = 5
-        Me.btn_menu.ContextMenuStrip = Me.system_menu
-        Me.btn_menu.DisabledState.BorderColor = System.Drawing.Color.DarkGray
-        Me.btn_menu.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
-        Me.btn_menu.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
-        Me.btn_menu.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
-        Me.btn_menu.Dock = System.Windows.Forms.DockStyle.Right
-        Me.btn_menu.FillColor = System.Drawing.SystemColors.ControlLight
-        Me.btn_menu.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.btn_menu.ForeColor = System.Drawing.Color.DimGray
-        Me.btn_menu.Image = CType(resources.GetObject("btn_menu.Image"), System.Drawing.Image)
-        Me.btn_menu.ImageSize = New System.Drawing.Size(24, 24)
-        Me.btn_menu.Location = New System.Drawing.Point(890, 0)
-        Me.btn_menu.Name = "btn_menu"
-        Me.btn_menu.Size = New System.Drawing.Size(71, 51)
-        Me.btn_menu.TabIndex = 5
-        Me.ToolTip1.SetToolTip(Me.btn_menu, "Menu")
-        Me.btn_menu.UseTransparentBackground = True
-        '
-        'system_menu
-        '
-        Me.system_menu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem2, Me.PartsScanningToolStripMenuItem, Me.QCScanningToolStripMenuItem, Me.TraceabilityToolStripMenuItem})
-        Me.system_menu.Name = "ContextMenuStrip1"
-        Me.system_menu.Size = New System.Drawing.Size(180, 124)
-        '
-        'ToolStripMenuItem2
-        '
-        Me.ToolStripMenuItem2.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ScanINToolStripMenuItem})
-        Me.ToolStripMenuItem2.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ToolStripMenuItem2.ForeColor = System.Drawing.Color.DimGray
-        Me.ToolStripMenuItem2.Image = CType(resources.GetObject("ToolStripMenuItem2.Image"), System.Drawing.Image)
-        Me.ToolStripMenuItem2.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
-        Me.ToolStripMenuItem2.Name = "ToolStripMenuItem2"
-        Me.ToolStripMenuItem2.Size = New System.Drawing.Size(179, 30)
-        Me.ToolStripMenuItem2.Text = "Kitting"
-        '
-        'ScanINToolStripMenuItem
-        '
-        Me.ScanINToolStripMenuItem.ForeColor = System.Drawing.Color.DimGray
-        Me.ScanINToolStripMenuItem.Name = "ScanINToolStripMenuItem"
-        Me.ScanINToolStripMenuItem.Size = New System.Drawing.Size(128, 24)
-        Me.ScanINToolStripMenuItem.Text = "Scan IN"
-        '
-        'PartsScanningToolStripMenuItem
-        '
-        Me.PartsScanningToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.PartsScanningToolStripMenuItem.ForeColor = System.Drawing.Color.DimGray
-        Me.PartsScanningToolStripMenuItem.Image = CType(resources.GetObject("PartsScanningToolStripMenuItem.Image"), System.Drawing.Image)
-        Me.PartsScanningToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
-        Me.PartsScanningToolStripMenuItem.Name = "PartsScanningToolStripMenuItem"
-        Me.PartsScanningToolStripMenuItem.Size = New System.Drawing.Size(179, 30)
-        Me.PartsScanningToolStripMenuItem.Text = "Parts Scanning"
-        '
-        'QCScanningToolStripMenuItem
-        '
-        Me.QCScanningToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.QCScanningToolStripMenuItem.ForeColor = System.Drawing.Color.DimGray
-        Me.QCScanningToolStripMenuItem.Image = CType(resources.GetObject("QCScanningToolStripMenuItem.Image"), System.Drawing.Image)
-        Me.QCScanningToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
-        Me.QCScanningToolStripMenuItem.Name = "QCScanningToolStripMenuItem"
-        Me.QCScanningToolStripMenuItem.Size = New System.Drawing.Size(179, 30)
-        Me.QCScanningToolStripMenuItem.Text = "QC Scanning"
-        '
-        'TraceabilityToolStripMenuItem
-        '
-        Me.TraceabilityToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TraceabilityToolStripMenuItem.ForeColor = System.Drawing.Color.DimGray
-        Me.TraceabilityToolStripMenuItem.Image = CType(resources.GetObject("TraceabilityToolStripMenuItem.Image"), System.Drawing.Image)
-        Me.TraceabilityToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
-        Me.TraceabilityToolStripMenuItem.Name = "TraceabilityToolStripMenuItem"
-        Me.TraceabilityToolStripMenuItem.Size = New System.Drawing.Size(179, 30)
-        Me.TraceabilityToolStripMenuItem.Text = "Traceability"
+        Me.btn_stock.BackColor = System.Drawing.Color.Transparent
+        Me.btn_stock.BorderRadius = 5
+        Me.btn_stock.ContextMenuStrip = Me.system_menu
+        Me.btn_stock.DisabledState.BorderColor = System.Drawing.Color.DarkGray
+        Me.btn_stock.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
+        Me.btn_stock.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
+        Me.btn_stock.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
+        Me.btn_stock.Dock = System.Windows.Forms.DockStyle.Right
+        Me.btn_stock.FillColor = System.Drawing.SystemColors.ControlLight
+        Me.btn_stock.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.btn_stock.ForeColor = System.Drawing.Color.DimGray
+        Me.btn_stock.Image = CType(resources.GetObject("btn_stock.Image"), System.Drawing.Image)
+        Me.btn_stock.ImageSize = New System.Drawing.Size(24, 24)
+        Me.btn_stock.Location = New System.Drawing.Point(915, 0)
+        Me.btn_stock.Name = "btn_stock"
+        Me.btn_stock.Size = New System.Drawing.Size(46, 51)
+        Me.btn_stock.TabIndex = 7
+        Me.ToolTip1.SetToolTip(Me.btn_stock, "Menu")
+        Me.btn_stock.UseTransparentBackground = True
         '
         'sub_Frame
         '
@@ -263,11 +287,11 @@ Partial Class sub_Frame
         Me.Text = "sub_Frame"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.Panel2.ResumeLayout(False)
+        Me.system_menu.ResumeLayout(False)
         Me.profile_menu.ResumeLayout(False)
         Me.Panel3.ResumeLayout(False)
         Me.Panel3.PerformLayout()
         CType(Me.Guna2PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.system_menu.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -291,4 +315,5 @@ Partial Class sub_Frame
     Friend WithEvents Label2 As Label
     Friend WithEvents Label1 As Label
     Friend WithEvents ScanINToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents btn_stock As Guna.UI2.WinForms.Guna2Button
 End Class

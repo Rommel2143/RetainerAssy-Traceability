@@ -37,4 +37,8 @@
     Private Sub ScanINToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ScanINToolStripMenuItem.Click
         display_formsub(kitting_IN)
     End Sub
+
+    Private Sub btn_stock_Click(sender As Object, e As EventArgs) Handles btn_stock.Click
+
+    End Sub
 End Class
