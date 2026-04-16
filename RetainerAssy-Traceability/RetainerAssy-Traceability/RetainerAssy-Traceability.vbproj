@@ -26,7 +26,7 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <UpdateUrl>\\ptif1-ds\SystemServer\RetainerAssy-Traceability\</UpdateUrl>
-    <ApplicationRevision>11</ApplicationRevision>
+    <ApplicationRevision>12</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -69,10 +69,10 @@
     <ApplicationIcon>INVENTORY %285%29.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>7980A4CAE8A9BDDC6B2418E0F95B067B4ECCAA11</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>3B15BE5FC8D5B4762A034AD519669C78B231A559</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>RetainerAssy-Traceability_1_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>RetainerAssy-Traceability_2_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateManifests>true</GenerateManifests>
@@ -324,6 +324,7 @@
     <None Include="App.config" />
     <None Include="packages.config" />
     <None Include="RetainerAssy-Traceability_1_TemporaryKey.pfx" />
+    <None Include="RetainerAssy-Traceability_2_TemporaryKey.pfx" />
     <None Include="RetainerAssy-Traceability_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>

@@ -41,26 +41,25 @@ Module kitting
 
     Private Function ProcessQRcode_inoac(qrcode As String) As Boolean
         Try
-            Dim parts() As String = qrcode.Trim.Split("/")
+            Dim parts() As String = qrcode.Trim.Split("|"c)
 
-            'CON 1 : QR SPLITING
-            If parts.Length >= 6 Then
-                QRpartcode = parts(3)
-                QRlotnumber = parts(0)
-                QRqty = parts(6)
-                Return True ' Indicate success
+            If parts.Length >= 7 Then
+
+                QRpartcode = parts(5).Trim()
+
+                ' Clean quantity (remove comma)
+                QRqty = CInt(parts(3).Replace(",", "").Trim())
+
+                Return True
             Else
-                ' Show an error if the QR code format is invalid
                 show_error("Invalid QR format!", 1)
-                Return False ' Indicate failure
+                Return False
             End If
 
         Catch ex As Exception
-            ' Handle unexpected errors gracefully
             show_error("Invalid QR format!", 1)
-            Return False ' Indicate failure
+            Return False
         Finally
-            ' Ensure the database connection is properly closed
             If con IsNot Nothing AndAlso con.State = ConnectionState.Open Then
                 con.Close()
             End If
