@@ -8,25 +8,15 @@ Module kitting
 
     Private Function ProcessQRcode(qrcode As String) As Boolean
         Try
-            ' Split the QR code using the pipe character
-            Dim parts() As String = qrcode.Split("|")
+            Dim qrData As ProcessLot = ProcessLot.Parse(qrcode)
+            ' Assign values to module-level variables
+            QRpartcode = qrData.PartCode
+            QRsupplier = qrData.SupplierCode
+            QRlotnumber = qrData.LotNumber
+            QRqty = qrData.TotalQty
+            QRremarks = qrData.Remarks
+            Return True ' Indicate success
 
-            ' Validate the number of parts in the QR code
-            If parts.Length >= 5 AndAlso parts.Length <= 8 Then
-
-                ' Assign values to module-level variables
-                QRpartcode = parts(0).Remove(0, 2).Trim()
-                QRsupplier = parts(1).Remove(0, 2).Trim()
-                QRlotnumber = parts(2).Remove(0, 2).Trim()
-                QRqty = Convert.ToInt32(parts(3).Remove(0, 2).Trim())
-                QRremarks = parts(4).Remove(0, 2).Trim()
-
-                Return True ' Indicate success
-            Else
-                ' Show an error if the QR code format is invalid
-                show_error("Invalid QR format!", 1)
-                Return False ' Indicate failure
-            End If
         Catch ex As Exception
             ' Handle unexpected errors gracefully
             show_error("Invalid QR format!", 1)

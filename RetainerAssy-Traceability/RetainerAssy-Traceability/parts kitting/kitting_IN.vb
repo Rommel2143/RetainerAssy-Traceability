@@ -10,7 +10,7 @@ Public Class kitting_IN
 
     Private Sub txtqr_KeyDown(sender As Object, e As KeyEventArgs) Handles txtqr.KeyDown
         If e.KeyCode = Keys.Enter Then
-            If Insert_kitting(txtqr.Text.Trim, cmb_type.Text.Substring(0, 1)) Then
+            If Insert_kitting(txtqr.Text, cmb_type.Text.Substring(0, 1)) Then
                 LoadRecords()
             End If
             txtqr.Clear()
